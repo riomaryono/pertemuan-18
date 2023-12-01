@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu Pilihan</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 50px;
+      }
+
+      #output {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Menu Pilihan:</h2>
+
+    <button onclick="pilihMenu(1)">[1] Menghitung Kalkulator</button>
+    <button onclick="pilihMenu(2)">[2] Menghitung Luas Trapesium</button>
+    <button onclick="pilihMenu(3)">[3] Menghitung Deret</button>
+
+    <div id="output"></div>
+
+    <script>
+      function pilihMenu(menu) {
+        let outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = ""; // Mengosongkan output sebelumnya
+
+        switch (menu) {
+          case 1:
+            hitungKalkulator();
+            break;
+          case 2:
+            hitungLuasTrapesium();
+            break;
+          case 3:
+            hitungDeret();
+            break;
+          default:
+            outputDiv.innerHTML = "Pilihan tidak valid.";
+        }
+      }
+
+      function hitungKalkulator() {
+        let angka1 = parseFloat(prompt("Masukkan angka pertama:"));
+        let operator = prompt("Masukkan operator (+, -, *, /):");
+        let angka2 = parseFloat(prompt("Masukkan angka kedua:"));
+
+        let hasil;
+
+        switch (operator) {
+          case "+":
+            hasil = angka1 + angka2;
+            break;
+          case "-":
+            hasil = angka1 - angka2;
+            break;
+          case "*":
+            hasil = angka1 * angka2;
+            break;
+          case "/":
+            hasil = angka1 / angka2;
+            break;
+          default:
+            hasil = "Operator tidak valid";
+        }
+
+        let outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = "Hasil Kalkulator: " + hasil;
+      }
+
+      function hitungLuasTrapesium() {
+        let alas = parseFloat(prompt("Masukkan panjang alas:"));
+        let tinggi = parseFloat(prompt("Masukkan tinggi trapesium:"));
+        let sisiAtas = parseFloat(prompt("Masukkan panjang sisi atas:"));
+
+        let luas = ((alas + sisiAtas) / 2) * tinggi;
+
+        let outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = "Luas Trapesium: " + luas;
+      }
+
+      function hitungDeret() {
+        let n = parseInt(prompt("Masukkan jumlah suku (n):"));
+        let a = parseInt(prompt("Masukkan suku pertama (a):"));
+        let r = parseInt(prompt("Masukkan rasio (r):"));
+
+        let hasil = a * Math.pow(r, n - 1);
+
+        let outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = "Hasil Deret: " + hasil;
+      }
+    </script>
+  </body>
+</html>
